@@ -1,1 +1,449 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation | Afzal & Azba</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              850: '#062920',
+              900: '#05221b',
+              950: '#031712',
+            },
+            gold: {
+              300: '#f6d585',
+              400: '#e5b95a',
+              500: '#c59a3f',
+              600: '#a37b2c',
+              700: '#7e5d1e',
+            }
+          },
+          fontFamily: {
+            arabic: ['Amiri', 'serif'],
+            cinzel: ['Cinzel', 'serif'],
+            script: ['Alex Brush', 'cursive'],
+            sans: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Gold Gradient Text */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 35%, #b38728 65%, #fbf5b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .gold-gradient-border {
+      border-image: linear-gradient(135deg, #c59a3f, #f7e2a9, #c59a3f, #8c6721) 1;
+    }
+
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #c59a3f 0%, #dfba63 50%, #a37b2c 100%);
+    }
+
+    /* Ambient luxury background */
+    .bg-pattern {
+      background-color: #041a14;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 154, 63, 0.15), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(197, 154, 63, 0.08), transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(197, 154, 63, 0.08), transparent 30%);
+    }
+
+    /* Floating subtle animation */
+    @keyframes floatPetal {
+      0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.6; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .petal {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatPetal 14s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-pattern text-gray-200 font-sans min-h-screen relative selection:bg-gold-500 selection:text-black pb-16">
+
+  <!-- Interactive Demo Bar (Custom Guest Link Generator) -->
+  <div class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gold-500/30 px-4 py-2.5 shadow-lg">
+    <div class="max-w-xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2 text-gold-400 font-medium">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Live Guest Personalizer:</span>
+      </div>
+      <div class="flex items-center gap-2 flex-grow sm:flex-grow-0">
+        <input 
+          id="customGuestInput" 
+          type="text" 
+          placeholder="Type guest name..." 
+          class="bg-emerald-950 border border-gold-500/40 rounded px-2.5 py-1 text-gold-200 placeholder-gray-500 focus:outline-none focus:border-gold-400 w-36 sm:w-44 text-xs"
+        />
+        <button 
+          onclick="applyGuestName()" 
+          class="bg-gold-500 hover:bg-gold-400 text-black font-semibold px-2.5 py-1 rounded transition duration-150">
+          Update
+        </button>
+        <button 
+          onclick="copyShareableLink()" 
+          class="bg-emerald-900 hover:bg-emerald-800 border border-gold-500/40 text-gold-300 px-2.5 py-1 rounded transition duration-150"
+          title="Copy link to send on WhatsApp">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative Falling Petals Container -->
+  <div id="petals-container"></div>
+
+  <!-- Main Container -->
+  <main class="max-w-xl mx-auto px-4 pt-6 sm:pt-10 relative z-10">
+
+    <!-- Card Wrapper with double border styling -->
+    <div class="relative bg-emerald-950/85 backdrop-blur-xl border border-gold-500/40 rounded-2xl shadow-2xl p-4 sm:p-8 overflow-hidden text-center">
+      
+      <!-- Ornamental Inner Border -->
+      <div class="border border-gold-500/30 rounded-xl p-4 sm:p-7 relative">
+        
+        <!-- Corner Flourishes -->
+        <div class="absolute -top-1 -left-1 text-gold-400 text-sm">✤</div>
+        <div class="absolute -top-1 -right-1 text-gold-400 text-sm">✤</div>
+        <div class="absolute -bottom-1 -left-1 text-gold-400 text-sm">✤</div>
+        <div class="absolute -bottom-1 -right-1 text-gold-400 text-sm">✤</div>
+
+        <!-- Bismillah Header[span_0](start_span)[span_0](end_span) -->
+        <div class="mb-2">
+          <p class="font-arabic text-3xl sm:text-4xl text-gold-300 leading-relaxed drop-shadow">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+          <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.25em] uppercase text-gold-400/90 mt-1">
+            In The Name Of "ALLAH" The Most Beneficent, The Most Merciful[span_1](start_span)[span_1](end_span)
+          </p>
+        </div>
+
+        <div class="flex items-center justify-center my-3 gap-3">
+          <div class="h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent w-24"></div>
+          <i class="fa-solid fa-moon text-gold-400 text-xs"></i>
+          <div class="h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent w-24"></div>
+        </div>
+
+        <!-- Dynamic Guest Name Box[span_2](start_span)[span_2](end_span) -->
+        <div id="guestBox" class="my-4 inline-block bg-gradient-to-r from-emerald-900/60 via-gold-950/40 to-emerald-900/60 border border-gold-500/40 px-5 py-2 rounded-full shadow-inner">
+          <p class="text-xs text-gold-300 font-cinzel tracking-wider">
+            Cordially Invited[span_3](start_span)[span_3](end_span): 
+            <span id="guestDisplay" class="font-semibold text-white uppercase ml-1">Respected Family & Friends</span>
+          </p>
+        </div>
+
+        <!-- Parents Blessing[span_4](start_span)[span_4](end_span) -->
+        <div class="my-5 text-gray-300 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
+          <p class="font-cinzel font-semibold tracking-wider text-gold-300 text-sm sm:text-base mb-1">
+            HAJIYANI REHMATBANU HAJI ISMAIL BHAI MANSURI[span_5](start_span)[span_5](end_span)
+          </p>
+          <p class="text-gray-300 text-xs tracking-wide">
+            Request the honor of your presence to grace the auspicious occasion of the wedding ceremony of their beloved Son[span_6](start_span)[span_6](end_span)
+          </p>
+        </div>
+
+        <!-- Couple Names Section[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span) -->
+        <div class="my-6 space-y-1">
+          <!-- Groom[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span) -->
+          <div class="relative">
+            <h1 class="font-script text-5xl sm:text-6xl text-gold-300 tracking-wide drop-shadow-lg py-1">Afzal[span_11](start_span)[span_11](end_span)[span_12](start_span)[span_12](end_span)</h1>
+            <p class="font-sans text-[11px] sm:text-xs text-gray-300">
+              S/o. <span class="text-gold-200 font-medium">Haji Harun Bhai Haji Ismail Bhai Mansuri</span> &amp; <span class="text-gold-200 font-medium">Hina Banu Harun Bhai Mansuri</span>[span_13](start_span)[span_13](end_span)
+            </p>
+          </div>
+
+          <!-- Weds Divider[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span) -->
+          <div class="flex items-center justify-center gap-3 py-2">
+            <div class="h-px bg-gold-500/40 w-16"></div>
+            <span class="font-cinzel text-xs uppercase tracking-widest text-black bg-gold-400 font-bold px-3 py-0.5 rounded-full shadow">
+              Weds[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span)
+            </span>
+            <div class="h-px bg-gold-500/40 w-16"></div>
+          </div>
+
+          <!-- Bride[span_18](start_span)[span_18](end_span)[span_19](start_span)[span_19](end_span) -->
+          <div class="relative">
+            <h1 class="font-script text-5xl sm:text-6xl text-gold-300 tracking-wide drop-shadow-lg py-1">Azba[span_20](start_span)[span_20](end_span)[span_21](start_span)[span_21](end_span)</h1>
+            <p class="font-sans text-[11px] sm:text-xs text-gray-300">
+              D/o. <span class="text-gold-200 font-medium">Akbar Bhai Haji Usman Bhai Mansuri</span> &amp; <span class="text-gold-200 font-medium">Farida Banu Akbar Bhai Mansuri</span>[span_22](start_span)[span_22](end_span)
+            </p>
+          </div>
+        </div>
+
+        <!-- Live Countdown Timer[span_23](start_span)[span_23](end_span) -->
+        <div class="my-7 bg-emerald-900/60 border border-gold-500/30 rounded-xl p-4 shadow-inner">
+          <p class="font-cinzel text-xs tracking-[0.2em] uppercase text-gold-400 mb-3 flex items-center justify-center gap-2">
+            <i class="fa-regular fa-clock"></i> Countdown to Nikah Ceremony[span_24](start_span)[span_24](end_span)
+          </p>
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+              <span id="days" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-400">Days</span>
+            </div>
+            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+              <span id="hours" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-400">Hours</span>
+            </div>
+            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+              <span id="minutes" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-400">Mins</span>
+            </div>
+            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+              <span id="seconds" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-400">Secs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Schedule[span_25](start_span)[span_25](end_span)[span_26](start_span)[span_26](end_span) -->
+        <div class="text-left space-y-4 my-8">
+          <h3 class="font-cinzel text-center text-gold-400 tracking-[0.25em] text-sm uppercase mb-4 flex items-center justify-center gap-2">
+            <span>✤</span> Save The Date <span>✤</span>[span_27](start_span)[span_27](end_span)
+          </h3>
+
+          <!-- Event 1: Nikah[span_28](start_span)[span_28](end_span) -->
+          <div class="bg-emerald-900/40 hover:bg-emerald-900/60 transition border border-gold-500/30 rounded-xl p-4 relative group">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded mb-1">
+                  Sacred Union[span_29](start_span)[span_29](end_span)
+                </span>
+                <h4 class="font-cinzel text-base sm:text-lg font-bold text-white">Nikah Ceremony[span_30](start_span)[span_30](end_span)</h4>
+                <p class="text-xs text-gold-300 mt-0.5 font-medium">
+                  <i class="fa-regular fa-calendar-check mr-1"></i> Thursday, 10th December 2026 • 11:00 AM Onwards[span_31](start_span)[span_31](end_span)
+                </p>
+                <p class="text-xs text-gray-300 mt-1">
+                  <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> <strong>Jali Wali Masjid</strong>, Lal Darwaja, Ahmedabad[span_32](start_span)[span_32](end_span)
+                </p>
+              </div>
+            </div>
+            <div class="mt-3">
+              <a 
+                href="https://maps.google.com/?q=Jali+Wali+Masjid+Lal+Darwaja+Ahmedabad" 
+                target="_blank" 
+                class="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white bg-gold-500/20 hover:bg-gold-500/40 border border-gold-500/40 px-3 py-1 rounded-full transition">
+                <span>View on Google Maps</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Event 2: Baraat[span_33](start_span)[span_33](end_span) -->
+          <div class="bg-emerald-900/40 hover:bg-emerald-900/60 transition border border-gold-500/30 rounded-xl p-4 relative group">
+            <div>
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded mb-1">
+                Procession[span_34](start_span)[span_34](end_span)
+              </span>
+              <h4 class="font-cinzel text-base sm:text-lg font-bold text-white">Baraat[span_35](start_span)[span_35](end_span)</h4>
+              <p class="text-xs text-gold-300 mt-0.5 font-medium">
+                <i class="fa-regular fa-calendar-check mr-1"></i> Thursday, 10th December 2026 • At 6:00 PM[span_36](start_span)[span_36](end_span)
+              </p>
+              <p class="text-xs text-gray-300 mt-1">
+                <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> <strong>Noor Party Plot</strong>, Nr. Khodiyarnagar Cross Road, Behrampura, Ahmedabad[span_37](start_span)[span_37](end_span)
+              </p>
+            </div>
+            <div class="mt-3">
+              <a 
+                href="https://maps.google.com/?q=Noor+Party+Plot+Khodiyarnagar+Cross+Road+Behrampura+Ahmedabad" 
+                target="_blank" 
+                class="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white bg-gold-500/20 hover:bg-gold-500/40 border border-gold-500/40 px-3 py-1 rounded-full transition">
+                <span>View on Google Maps</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Event 3: Walima[span_38](start_span)[span_38](end_span)[span_39](start_span)[span_39](end_span) -->
+          <div class="bg-gradient-to-br from-emerald-900/70 to-emerald-950 border-2 border-gold-500/60 rounded-xl p-4 relative shadow-lg">
+            <div class="absolute -top-2.5 right-4 bg-gold-500 text-black font-cinzel text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow">
+              Grand Reception[span_40](start_span)[span_40](end_span)
+            </div>
+            <div>
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded mb-1">
+                Dawat-e-Walima[span_41](start_span)[span_41](end_span)
+              </span>
+              <h4 class="font-cinzel text-lg sm:text-xl font-bold text-gold-200">Dawat e Walima[span_42](start_span)[span_42](end_span)</h4>
+              <p class="text-xs text-gold-300 mt-0.5 font-medium">
+                <i class="fa-regular fa-calendar-check mr-1"></i> Friday, 11th December 2026 • 7:00 PM Onwards[span_43](start_span)[span_43](end_span)[span_44](start_span)[span_44](end_span)
+              </p>
+              <p class="text-xs text-gray-200 mt-1">
+                <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> <strong>Late Shree Ambalal Party Plot</strong>, Viratnagar, Ahmedabad - 380023[span_45](start_span)[span_45](end_span)
+              </p>
+            </div>
+            <div class="mt-3">
+              <a 
+                href="https://maps.google.com/?q=Late+Shree+Ambalal+Party+Plot+Viratnagar+Ahmedabad" 
+                target="_blank" 
+                class="inline-flex items-center gap-1.5 text-xs text-black font-semibold bg-gold-400 hover:bg-gold-300 px-3.5 py-1 rounded-full transition shadow">
+                <span>View on Google Maps</span>
+                <i class="fa-solid fa-location-arrow text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Little Invitees[span_46](start_span)[span_46](end_span) -->
+        <div class="my-6 bg-black/25 border border-gold-500/20 rounded-xl p-4">
+          <p class="font-cinzel text-xs uppercase tracking-widest text-gold-400 mb-1">Little Invitees[span_47](start_span)[span_47](end_span)</p>
+          <p class="text-xs italic text-gray-300 mb-2">
+            “Little hands and happy hearts invite you to celebrate the Nikah of our favorite couple! Come give them your sweetest duas.[span_48](start_span)”[span_48](end_span)
+          </p>
+          <p class="text-xs font-medium text-gold-200 tracking-wide">
+            Zayan • Saad • Azan • Hammad • Nawaz • Kabir • Zihan[span_49](start_span)[span_49](end_span)
+          </p>
+        </div>
+
+        <!-- Best Compliments From[span_50](start_span)[span_50](end_span) -->
+        <div class="my-6 border-t border-b border-gold-500/20 py-4">
+          <p class="font-cinzel text-xs uppercase tracking-widest text-gold-400 mb-2">With Best Compliments From[span_51](start_span)[span_51](end_span)</p>
+          <div class="text-[11px] leading-relaxed text-gray-400 max-w-lg mx-auto">
+            Late Fakir Mo. Umarbhai Mansuri • Late Haji Ismailbhai F. Mansuri • Hasanbhai F. Mansuri • Iqbalbhai F. Mansuri • Haji Harunbhai I. Mansuri • Imranbhai H. Mansuri • Asifbhai I. Mansuri • Rizwanbhai I. Mansuri • Idrishbhai H. Mansuri • Sirajbhai R. Mansuri • Aamirbhai S. Mansuri • Faizanbhai S. Mansuri • Mo. Zayan I. Mansuri • Mo. Saad I. Mansuri[span_52](start_span)[span_52](end_span)
+          </div>
+        </div>
+
+        <!-- Contact & Venue Address[span_53](start_span)[span_53](end_span) -->
+        <div class="mt-6 pt-2 text-center">
+          <p class="text-xs text-gray-400">
+            <strong class="text-gray-300">From / Residence:</strong>[span_54](start_span)[span_54](end_span)<br>
+            Haji Harun Bhai Haji Ismail Bhai Mansuri[span_55](start_span)[span_55](end_span)<br>
+            162/983, G H B, Nr. Morarji Chowk, Bapunagar, Ahmedabad - 380024[span_56](start_span)[span_56](end_span)
+          </p>
+
+          <!-- Direct Phone Call Buttons[span_57](start_span)[span_57](end_span) -->
+          <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+            <a href="tel:9173468335" class="bg-emerald-900/80 hover:bg-emerald-800 border border-gold-500/30 text-gold-300 text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-phone text-[10px]"></i> Afzal: 9173468335[span_58](start_span)[span_58](end_span)
+            </a>
+            <a href="tel:9824334468" class="bg-emerald-900/80 hover:bg-emerald-800 border border-gold-500/30 text-gold-300 text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-phone text-[10px]"></i> Haji Harunbhai: 9824334468[span_59](start_span)[span_59](end_span)
+            </a>
+            <a href="tel:7984694400" class="bg-emerald-900/80 hover:bg-emerald-800 border border-gold-500/30 text-gold-300 text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-phone text-[10px]"></i> Idrishbhai: 7984694400[span_60](start_span)[span_60](end_span)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Notification Toast for Copied URL -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gold-400 text-black px-4 py-2 rounded-lg text-xs font-semibold shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+      Personalized link copied!
+    </div>
+  </main>
+
+  <script>
+    // 1. Read Guest Name from Query String (?to=Guest+Name)
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function initGuestName() {
+      const guest = getQueryParam('to');
+      if (guest && guest.trim() !== '') {
+        const cleanName = decodeURIComponent(guest.replace(/\+/g, ' '));
+        document.getElementById('guestDisplay').textContent = cleanName;
+        document.getElementById('customGuestInput').value = cleanName;
+      }
+    }
+
+    // 2. Interactive Guest Name Updater
+    function applyGuestName() {
+      const name = document.getElementById('customGuestInput').value.trim();
+      if (name) {
+        document.getElementById('guestDisplay').textContent = name;
+        
+        // Update URL without page reload
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('to', name);
+        window.history.replaceState({}, '', newUrl);
+      }
+    }
+
+    // 3. Copy WhatsApp Shareable Link
+    function copyShareableLink() {
+      applyGuestName();
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast("Link copied to clipboard! Ready to share on WhatsApp.");
+      }).catch(() => {
+        showToast("Failed to copy link.");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2500);
+    }
+
+    // 4. Live Countdown to Nikah: December 10, 2026, 11:00 AM IST
+    const eventTime = new Date("2026-12-10T11:00:00+05:30").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventTime - now;
+
+      if (distance > 0) {
+        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = d < 10 ? '0' + d : d;
+        document.getElementById('hours').textContent = h < 10 ? '0' + h : h;
+        document.getElementById('minutes').textContent = m < 10 ? '0' + m : m;
+        document.getElementById('seconds').textContent = s < 10 ? '0' + s : s;
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    initGuestName();
+
+    // 5. Ambient Falling Petals Effect
+    const petalContainer = document.getElementById('petals-container');
+    const petalSymbols = ['🌸', '✨', '🍃', '💛'];
+    for (let i = 0; i < 15; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal text-xs';
+      petal.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (8 + Math.random() * 8) + 's';
+      petal.style.animationDelay = (Math.random() * 6) + 's';
+      petalContainer.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
