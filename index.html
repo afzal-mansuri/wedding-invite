@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Invitation | Afzal & Azba</title>
+  <title>Wedding Invitation | Afzal &amp; Azba</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -46,18 +46,20 @@
   </script>
 
   <style>
+    /* Ambient luxury emerald and royal gold background */
     .bg-pattern {
       background-color: #041a14;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(197, 154, 63, 0.15), transparent 45%),
+        radial-gradient(circle at 50% 0%, rgba(197, 154, 63, 0.16), transparent 45%),
         radial-gradient(circle at 10% 90%, rgba(197, 154, 63, 0.08), transparent 30%),
         radial-gradient(circle at 90% 90%, rgba(197, 154, 63, 0.08), transparent 30%);
     }
 
+    /* Subtle falling petal animation */
     @keyframes floatPetal {
       0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
-      20% { opacity: 0.6; }
-      80% { opacity: 0.6; }
+      20% { opacity: 0.65; }
+      80% { opacity: 0.65; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
@@ -71,8 +73,8 @@
 </head>
 <body class="bg-pattern text-gray-200 font-sans min-h-screen relative selection:bg-gold-500 selection:text-black pb-16">
 
-  <!-- Interactive Demo Bar -->
-  <div id="personalizerToolbar" class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gold-500/30 px-4 py-2.5 shadow-lg">
+  <!-- Interactive Guest Personalizer Bar (Hides automatically when ?to= is present in URL) -->
+  <div id="personalizerToolbar" class="sticky top-0 z-50 bg-black/85 backdrop-blur-md border-b border-gold-500/30 px-4 py-2.5 shadow-lg">
     <div class="max-w-xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
       <div class="flex items-center gap-2 text-gold-400 font-medium">
         <i class="fa-solid fa-sparkles"></i>
@@ -83,16 +85,16 @@
           id="customGuestInput" 
           type="text" 
           placeholder="Type guest name..." 
-          class="bg-emerald-950 border border-gold-500/40 rounded px-2.5 py-1 text-gold-200 placeholder-gray-500 focus:outline-none focus:border-gold-400 w-36 sm:w-44 text-xs"
+          class="bg-emerald-950 border border-gold-500/40 rounded-lg px-2.5 py-1.5 text-gold-200 placeholder-gray-500 focus:outline-none focus:border-gold-400 w-36 sm:w-44 text-xs"
         />
         <button 
           onclick="applyGuestName()" 
-          class="bg-gold-500 hover:bg-gold-400 text-black font-semibold px-2.5 py-1 rounded transition duration-150">
+          class="bg-gold-500 hover:bg-gold-400 text-black font-semibold px-3 py-1.5 rounded-lg transition duration-150">
           Update
         </button>
         <button 
           onclick="copyShareableLink()" 
-          class="bg-emerald-900 hover:bg-emerald-800 border border-gold-500/40 text-gold-300 font-medium px-2.5 py-1 rounded transition duration-150 flex items-center gap-1.5"
+          class="bg-emerald-900 hover:bg-emerald-800 border border-gold-500/40 text-gold-300 font-medium px-3 py-1.5 rounded-lg transition duration-150 flex items-center gap-1.5"
           title="Copy link to send on WhatsApp">
           <i class="fa-regular fa-copy text-[11px]"></i>
           <span>Copy link</span>
@@ -101,129 +103,125 @@
     </div>
   </div>
 
+  <!-- Floating Petals Layer -->
   <div id="petals-container"></div>
 
-  <!-- Main Container -->
+  <!-- Main Invitation Card Container -->
   <main class="max-w-xl mx-auto px-4 pt-6 sm:pt-10 relative z-10">
 
     <div class="relative bg-emerald-950/85 backdrop-blur-xl border border-gold-500/40 rounded-2xl shadow-2xl p-4 sm:p-8 overflow-hidden text-center">
       
-      <div class="border border-gold-500/30 rounded-xl p-4 sm:p-7 relative">
+      <!-- Inner Ornamental Frame -->
+      <div class="border border-gold-500/30 rounded-xl p-5 sm:p-8 relative">
         
-        <div class="absolute -top-1 -left-1 text-gold-400 text-sm">&#10022;</div>
-        <div class="absolute -top-1 -right-1 text-gold-400 text-sm">&#10022;</div>
-        <div class="absolute -bottom-1 -left-1 text-gold-400 text-sm">&#10022;</div>
-        <div class="absolute -bottom-1 -right-1 text-gold-400 text-sm">&#10022;</div>
+        <!-- Corner Ornaments -->
+        <div class="absolute -top-1.5 -left-1.5 text-gold-400 text-sm">&#10022;</div>
+        <div class="absolute -top-1.5 -right-1.5 text-gold-400 text-sm">&#10022;</div>
+        <div class="absolute -bottom-1.5 -left-1.5 text-gold-400 text-sm">&#10022;</div>
+        <div class="absolute -bottom-1.5 -right-1.5 text-gold-400 text-sm">&#10022;</div>
 
         <!-- Bismillah Header -->
         <div class="mb-2">
-          <p class="font-arabic text-3xl sm:text-4xl text-gold-300 leading-relaxed drop-shadow">&#1576;&#1616;&#1587;&#1618;&#1605;&#1616; &#1575;&#1604;&#1604;&#1614;&#1617;&#1607;&#1616; &#1575;&#1604;&#1585;&#1614;&#1617;&#1581;&#1618;&#1605;&#1614;&#1641;&#1606;&#1616; &#1575;&#1604;&#1585;&#1614;&#1617;&#1581;&#1616;&#1610;&#1605;&#1616;</p>
+          <p class="font-arabic text-3xl sm:text-4xl text-gold-300 leading-relaxed drop-shadow">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
           <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.25em] uppercase text-gold-400/90 mt-1">
             In The Name Of "ALLAH" The Most Beneficent, The Most Merciful
           </p>
         </div>
 
-        <div class="flex items-center justify-center my-3 gap-3">
+        <!-- Decorative Divider -->
+        <div class="flex items-center justify-center my-4 gap-3">
           <div class="h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent w-24"></div>
           <i class="fa-solid fa-moon text-gold-400 text-xs"></i>
           <div class="h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent w-24"></div>
         </div>
 
-        <!-- Dynamic Guest Name Box -->
-        <div id="guestBox" class="my-4 inline-block bg-gradient-to-r from-emerald-900/60 via-gold-950/40 to-emerald-900/60 border border-gold-500/40 px-5 py-2 rounded-full shadow-inner">
+        <!-- Dynamic Guest Name Personalization Pill -->
+        <div id="guestBox" class="my-4 inline-block bg-gradient-to-r from-emerald-900/60 via-gold-950/40 to-emerald-900/60 border border-gold-500/40 px-6 py-2.5 rounded-full shadow-inner">
           <p class="text-xs text-gold-300 font-cinzel tracking-wider">
             Cordially Invited: 
             <span id="guestDisplay" class="font-semibold text-white uppercase ml-1">Respected Family &amp; Friends</span>
           </p>
         </div>
 
-        <!-- Parents Blessing -->
+        <!-- Invitation Intro -->
         <div class="my-5 text-gray-300 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
-          <p class="font-cinzel font-semibold tracking-wider text-gold-300 text-sm sm:text-base mb-1">
-            HAJIYANI REHMATBANU HAJI ISMAIL BHAI MANSURI
-          </p>
-          <p class="text-gray-300 text-xs tracking-wide">
-            Request the honor of your presence to grace the auspicious occasion of the wedding ceremony of their beloved Son
+          <p class="text-gray-200 text-xs sm:text-sm tracking-wide">
+            Request the honor of your presence to grace the auspicious occasion of the wedding ceremony
           </p>
         </div>
 
         <!-- Couple Names Section -->
-        <div class="my-6 space-y-1">
+        <div class="my-7 space-y-2">
           <div class="relative">
-            <h1 class="font-script text-5xl sm:text-6xl text-gold-300 tracking-wide drop-shadow-lg py-1">Afzal</h1>
-            <p class="font-sans text-[11px] sm:text-xs text-gray-300">
-              S/o. <span class="text-gold-200 font-medium">Haji Harun Bhai Haji Ismail Bhai Mansuri</span> &amp; <span class="text-gold-200 font-medium">Hina Banu Harun Bhai Mansuri</span>
-            </p>
+            <h1 class="font-script text-6xl sm:text-7xl text-gold-300 tracking-wide drop-shadow-lg py-1">Afzal</h1>
           </div>
 
           <div class="flex items-center justify-center gap-3 py-2">
             <div class="h-px bg-gold-500/40 w-16"></div>
-            <span class="font-cinzel text-xs uppercase tracking-widest text-black bg-gold-400 font-bold px-3 py-0.5 rounded-full shadow">
+            <span class="font-cinzel text-xs uppercase tracking-widest text-black bg-gold-400 font-bold px-3.5 py-0.5 rounded-full shadow">
               Weds
             </span>
             <div class="h-px bg-gold-500/40 w-16"></div>
           </div>
 
           <div class="relative">
-            <h1 class="font-script text-5xl sm:text-6xl text-gold-300 tracking-wide drop-shadow-lg py-1">Azba</h1>
-            <p class="font-sans text-[11px] sm:text-xs text-gray-300">
-              D/o. <span class="text-gold-200 font-medium">Akbar Bhai Haji Usman Bhai Mansuri</span> &amp; <span class="text-gold-200 font-medium">Farida Banu Akbar Bhai Mansuri</span>
-            </p>
+            <h1 class="font-script text-6xl sm:text-7xl text-gold-300 tracking-wide drop-shadow-lg py-1">Azba</h1>
           </div>
         </div>
 
         <!-- Live Countdown Timer -->
-        <div class="my-7 bg-emerald-900/60 border border-gold-500/30 rounded-xl p-4 shadow-inner">
-          <p class="font-cinzel text-xs tracking-[0.2em] uppercase text-gold-400 mb-3 flex items-center justify-center gap-2">
+        <div class="my-8 bg-emerald-900/60 border border-gold-500/30 rounded-xl p-4 sm:p-5 shadow-inner">
+          <p class="font-cinzel text-xs tracking-[0.2em] uppercase text-gold-400 mb-3.5 flex items-center justify-center gap-2">
             <i class="fa-regular fa-clock"></i> Countdown to Nikah Ceremony
           </p>
-          <div class="grid grid-cols-4 gap-2 text-center">
-            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+          <div class="grid grid-cols-4 gap-2 sm:gap-3 text-center">
+            <div class="bg-black/40 border border-gold-500/20 rounded-xl py-2.5">
               <span id="days" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
               <span class="text-[9px] uppercase tracking-wider text-gray-400">Days</span>
             </div>
-            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+            <div class="bg-black/40 border border-gold-500/20 rounded-xl py-2.5">
               <span id="hours" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
               <span class="text-[9px] uppercase tracking-wider text-gray-400">Hours</span>
             </div>
-            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+            <div class="bg-black/40 border border-gold-500/20 rounded-xl py-2.5">
               <span id="minutes" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
               <span class="text-[9px] uppercase tracking-wider text-gray-400">Mins</span>
             </div>
-            <div class="bg-black/40 border border-gold-500/20 rounded-lg py-2">
+            <div class="bg-black/40 border border-gold-500/20 rounded-xl py-2.5">
               <span id="seconds" class="block font-cinzel text-2xl sm:text-3xl font-bold text-gold-300">00</span>
               <span class="text-[9px] uppercase tracking-wider text-gray-400">Secs</span>
             </div>
           </div>
         </div>
 
-        <!-- Events Schedule -->
-        <div class="text-left space-y-4 my-8">
-          <h3 class="font-cinzel text-center text-gold-400 tracking-[0.25em] text-sm uppercase mb-4 flex items-center justify-center gap-2">
+        <!-- Save The Date Schedule -->
+        <div class="text-left space-y-4 mt-8 mb-6">
+          <h3 class="font-cinzel text-center text-gold-400 tracking-[0.25em] text-sm uppercase mb-5 flex items-center justify-center gap-2">
             <span>&#10022;</span> Save The Date <span>&#10022;</span>
           </h3>
 
-          <!-- Event 1: Nikah -->
-          <div class="bg-emerald-900/40 hover:bg-emerald-900/60 transition border border-gold-500/30 rounded-xl p-4 relative group">
+          <!-- Event 1: Nikah Ceremony -->
+          <div class="bg-emerald-900/40 hover:bg-emerald-900/60 transition border border-gold-500/30 rounded-xl p-4 sm:p-5 relative group">
             <div class="flex items-start justify-between">
               <div>
-                <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded mb-1">
+                <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2.5 py-0.5 rounded-md mb-1.5">
                   Sacred Union
                 </span>
                 <h4 class="font-cinzel text-base sm:text-lg font-bold text-white">Nikah Ceremony</h4>
-                <p class="text-xs text-gold-300 mt-0.5 font-medium">
-                  <i class="fa-regular fa-calendar-check mr-1"></i> Thursday, 10th December 2026 • 11:00 AM Onwards
+                <p class="text-xs text-gold-300 mt-1 font-medium">
+                  <i class="fa-regular fa-calendar-check mr-1.5"></i> Thursday, 10th December 2026 &bull; 11:00 AM Onwards
                 </p>
-                <p class="text-xs text-gray-300 mt-1">
-                  <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> <strong>Jali Wali Masjid</strong>, Lal Darwaja, Ahmedabad
+                <p class="text-xs text-gray-300 mt-1.5">
+                  <i class="fa-solid fa-location-dot text-gold-400 mr-1.5"></i> <strong>Jali Wali Masjid</strong>, Lal Darwaja, Ahmedabad
                 </p>
               </div>
             </div>
-            <div class="mt-3">
+            <div class="mt-3.5">
               <a 
                 href="https://maps.google.com/?q=Jali+Wali+Masjid+Lal+Darwaja+Ahmedabad" 
                 target="_blank" 
-                class="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white bg-gold-500/20 hover:bg-gold-500/40 border border-gold-500/40 px-3 py-1 rounded-full transition">
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white bg-gold-500/20 hover:bg-gold-500/40 border border-gold-500/40 px-3.5 py-1.5 rounded-full transition">
                 <span>View on Google Maps</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
@@ -231,52 +229,54 @@
           </div>
 
           <!-- Event 2: Baraat -->
-          <div class="bg-emerald-900/40 hover:bg-emerald-900/60 transition border border-gold-500/30 rounded-xl p-4 relative group">
+          <div class="bg-emerald-900/40 hover:bg-emerald-900/60 transition border border-gold-500/30 rounded-xl p-4 sm:p-5 relative group">
             <div>
-              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded mb-1">
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2.5 py-0.5 rounded-md mb-1.5">
                 Procession
               </span>
               <h4 class="font-cinzel text-base sm:text-lg font-bold text-white">Baraat</h4>
-              <p class="text-xs text-gold-300 mt-0.5 font-medium">
-                <i class="fa-regular fa-calendar-check mr-1"></i> Thursday, 10th December 2026 • At 6:00 PM
+              <p class="text-xs text-gold-300 mt-1 font-medium">
+                <i class="fa-regular fa-calendar-check mr-1.5"></i> Thursday, 10th December 2026 &bull; At 6:00 PM
               </p>
-              <p class="text-xs text-gray-300 mt-1">
-                <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> <strong>Noor Party Plot</strong>, Nr. Khodiyarnagar Cross Road, Behrampura, Ahmedabad
+              <p class="text-xs text-gray-300 mt-1.5">
+                <i class="fa-solid fa-location-dot text-gold-400 mr-1.5"></i> <strong>Noor Party Plot</strong>, Nr. Khodiyarnagar Cross Road, Behrampura, Ahmedabad
               </p>
             </div>
-            <div class="mt-3">
+            <div class="mt-3.5">
               <a 
                 href="https://maps.google.com/?q=Noor+Party+Plot+Khodiyarnagar+Cross+Road+Behrampura+Ahmedabad" 
                 target="_blank" 
-                class="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white bg-gold-500/20 hover:bg-gold-500/40 border border-gold-500/40 px-3 py-1 rounded-full transition">
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white bg-gold-500/20 hover:bg-gold-500/40 border border-gold-500/40 px-3.5 py-1.5 rounded-full transition">
                 <span>View on Google Maps</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
             </div>
           </div>
 
-          <!-- Event 3: Walima -->
-          <div class="bg-gradient-to-br from-emerald-900/70 to-emerald-950 border-2 border-gold-500/60 rounded-xl p-4 relative shadow-lg">
-            <div class="absolute -top-2.5 right-4 bg-gold-500 text-black px-2 py-0.5 rounded shadow flex items-center justify-center">
-              <i class="fa-solid fa-star text-[10px]"></i>
+          <!-- Event 3: Dawat e Walima (Highlighted gold border with star badge) -->
+          <div class="bg-gradient-to-br from-emerald-900/75 to-emerald-950 border-2 border-gold-500/70 rounded-xl p-4 sm:p-5 relative shadow-lg">
+            <div class="absolute -top-3 right-4 bg-gold-500 text-black px-2.5 py-1 rounded-md shadow flex items-center justify-center">
+              <i class="fa-solid fa-star text-[11px]"></i>
             </div>
             <div>
-              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded mb-1">
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider bg-gold-500/25 text-gold-300 border border-gold-500/40 px-2.5 py-0.5 rounded-md mb-1.5">
                 Dawat-e-Walima
               </span>
               <h4 class="font-cinzel text-lg sm:text-xl font-bold text-gold-200">Dawat e Walima</h4>
-              <p class="text-xs text-gold-300 mt-0.5 font-medium">
-                <i class="fa-regular fa-calendar-check mr-1"></i> Friday, 11th December 2026 • 7:00 PM Onwards
+              <p class="text-xs text-gold-300 mt-1 font-medium">
+                <i class="fa-regular fa-calendar-check mr-1.5"></i> Friday, 11th December 2026 &bull; 7:00 PM Onwards
               </p>
-              <p class="text-xs text-gray-200 mt-1">
-                <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> <strong>Late Shree Ambalal Party Plot</strong>, Viratnagar, Ahmedabad - 380023
+              <p class="text-xs text-gray-200 mt-1.5">
+                <i class="fa-solid fa-location-dot text-gold-400 mr-1.5"></i> <strong>Late Shree Ambalal Party Plot</strong>, Viratnagar, Ahmedabad - 380023
               </p>
             </div>
-            <div class="mt-3">
+            <div class="mt-3.5">
               <a 
                 href="https://maps.google.com/?q=Late+Shree+Ambalal+Party+Plot+Viratnagar+Ahmedabad" 
                 target="_blank" 
-                class="inline-flex items-center gap-1.5 text-xs text-black font-semibold bg-gold-400 hover:bg-gold-300 px-3.5 py-1 rounded-full transition shadow">
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs text-black font-semibold bg-gold-400 hover:bg-gold-300 px-4 py-1.5 rounded-full transition shadow">
                 <span>View on Google Maps</span>
                 <i class="fa-solid fa-location-arrow text-[10px]"></i>
               </a>
@@ -284,43 +284,30 @@
           </div>
         </div>
 
-        <!-- Contact & Venue Address -->
-        <div class="mt-8 pt-4 border-t border-gold-500/20 text-center">
-          <p class="text-xs text-gray-400">
-            <strong class="text-gray-300">From / Residence:</strong><br>
-            Haji Harun Bhai Haji Ismail Bhai Mansuri<br>
-            162/983, G H B, Nr. Morarji Chowk, Bapunagar, Ahmedabad - 380024
+        <!-- Closing Message -->
+        <div class="mt-6 pt-5 border-t border-gold-500/20 text-center">
+          <p class="font-cinzel text-xs sm:text-sm text-gold-300 tracking-wide leading-relaxed max-w-md mx-auto">
+            Your presence and heartfelt duas will make our celebration truly complete.
           </p>
-
-          <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-            <a href="tel:9824334468" class="bg-emerald-900/80 hover:bg-emerald-800 border border-gold-500/30 text-gold-300 text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-phone text-[10px]"></i> Haji Harunbhai: 9824334468
-            </a>
-            <a href="tel:7984694400" class="bg-emerald-900/80 hover:bg-emerald-800 border border-gold-500/30 text-gold-300 text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-phone text-[10px]"></i> Idrishbhai: 7984694400
-            </a>
-            <a href="tel:9173468335" class="bg-emerald-900/80 hover:bg-emerald-800 border border-gold-500/30 text-gold-300 text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-phone text-[10px]"></i> Afzal: 9173468335
-            </a>
-          </div>
-
         </div>
 
       </div>
     </div>
 
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gold-400 text-black px-4 py-2 rounded-lg text-xs font-semibold shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+    <!-- Notification Toast for Copied Link -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gold-400 text-black px-4 py-2 rounded-xl text-xs font-semibold shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-50">
       Personalized link copied!
     </div>
   </main>
 
   <script>
+    // Parse URL parameter (?to=Guest+Name)
     function getQueryParam(name) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(name);
     }
 
+    // Initialize guest name and hide personalizer bar when ?to= is present
     function initGuestName() {
       const guest = getQueryParam('to');
       const toolbar = document.getElementById('personalizerToolbar');
@@ -338,23 +325,45 @@
       }
     }
 
+    // Apply typed name to invitation preview & update browser URL
     function applyGuestName() {
       const name = document.getElementById('customGuestInput').value.trim();
       if (name) {
         document.getElementById('guestDisplay').textContent = name;
-        const newUrl = new URL(window.location);
-        newUrl.searchParams.set('to', name);
-        window.history.replaceState({}, '', newUrl);
+        try {
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.set('to', name);
+          window.history.replaceState({}, '', newUrl);
+        } catch (e) {
+          // Fallback if history API is restricted in sandboxed frames
+        }
       }
     }
 
+    // Copy shareable personalized link using fallback execCommand for iframe compatibility
     function copyShareableLink() {
       applyGuestName();
-      navigator.clipboard.writeText(window.location.href).then(() => {
+      const name = document.getElementById('customGuestInput').value.trim();
+      let shareUrl = window.location.href;
+      try {
+        const urlObj = new URL(window.location.href);
+        if (name) {
+          urlObj.searchParams.set('to', name);
+        }
+        shareUrl = urlObj.toString();
+      } catch (e) {}
+
+      const tempInput = document.createElement('textarea');
+      tempInput.value = shareUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
         showToast("Link copied! Ready to share on WhatsApp.");
-      }).catch(() => {
-        showToast("Failed to copy link.");
-      });
+      } catch (err) {
+        showToast("Could not copy link.");
+      }
+      document.body.removeChild(tempInput);
     }
 
     function showToast(msg) {
@@ -368,6 +377,7 @@
       }, 2500);
     }
 
+    // Countdown Timer to Nikah: Thursday, December 10, 2026 at 11:00 AM IST
     const eventTime = new Date("2026-12-10T11:00:00+05:30").getTime();
 
     function updateCountdown() {
@@ -391,6 +401,7 @@
     updateCountdown();
     initGuestName();
 
+    // Generate subtle floating petals
     const petalContainer = document.getElementById('petals-container');
     const petalSymbols = ['🌸', '✨', '🍃', '💛'];
     for (let i = 0; i < 15; i++) {
